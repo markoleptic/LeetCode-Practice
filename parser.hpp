@@ -18,7 +18,9 @@ struct TreeNode
 struct ListNode
 {
 	int val;
-	ListNode *next = nullptr;
+	ListNode *next;
+	ListNode() : val(-1), next(nullptr) {}
+	ListNode(int x) : val(x), next(nullptr) {}
 };
 
 template <typename T> struct is_bitset : public false_type
