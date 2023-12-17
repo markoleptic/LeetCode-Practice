@@ -1,0 +1,8 @@
+"10"
+Elapsed time: 0ms
+"1111101011010010"
+Elapsed time: 0ms
+"0"
+Elapsed time: 0ms
+
+Total elapsed time: 0ms
