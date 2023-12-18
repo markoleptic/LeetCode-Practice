@@ -17,20 +17,15 @@ class Solution
       public:
 	vector<int> twoSum(vector<int> &nums, int target)
 	{
-		std::vector<int> Out(2);
-		for (size_t i = 0; i < nums.size() - 1; i++)
+		unordered_map<int, int> map;
+		for (int i = 0; i < nums.size(); i++)
 		{
-			for (size_t j = i + 1; j < nums.size(); j++)
-			{
-				if (nums[i] + nums[j] == target)
-				{
-					Out[0] = i;
-					Out[1] = j;
-					return Out;
-				}
-			}
+			int complement = target - nums[i];
+			if (map.contains(complement))
+				return {map.at(complement), i};
+			map.emplace(nums[i], i);
 		}
-		return Out;
+		return std::vector<int>(2);
 	}
 };
 

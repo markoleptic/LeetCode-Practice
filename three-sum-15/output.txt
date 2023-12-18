@@ -1,0 +1,10 @@
+[[-1,-1,2],[-1,0,1]]
+Elapsed time: 0ms
+[]
+Elapsed time: 0ms
+[[0,0,0]]
+Elapsed time: 0ms
+[[-1,-1,2],[-1,0,1]]
+Elapsed time: 0ms
+
+Total elapsed time: 0ms
