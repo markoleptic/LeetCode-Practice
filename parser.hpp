@@ -22,6 +22,23 @@ struct ListNode
 	ListNode() : val(-1), next(nullptr) {}
 	ListNode(int x) : val(x), next(nullptr) {}
 };
+class Node {
+public:
+    int val;
+    vector<Node*> neighbors;
+    Node() {
+        val = 0;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val) {
+        val = _val;
+        neighbors = vector<Node*>();
+    }
+    Node(int _val, vector<Node*> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
 
 template <typename T> struct is_bitset : public false_type
 {
