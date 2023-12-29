@@ -1,0 +1,8 @@
+[[2,2,3],[7]]
+Elapsed time: 0ms
+[[2,2,2,2],[2,3,3],[3,5]]
+Elapsed time: 0ms
+[]
+Elapsed time: 0ms
+
+Total elapsed time: 0ms
