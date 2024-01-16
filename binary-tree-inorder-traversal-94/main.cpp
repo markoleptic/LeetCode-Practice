@@ -21,9 +21,6 @@ class Solution
 		out.push_back(node->val);
 		if (node->right)
 		{
-			if (!node->left)
-			{
-			}
 			in_order(node->right, out);
 		}
 	}

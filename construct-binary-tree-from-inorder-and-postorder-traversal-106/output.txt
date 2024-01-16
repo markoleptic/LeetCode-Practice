@@ -1,0 +1,6 @@
+[3,9,20,null,null,15,7]
+Elapsed time: 0ms
+[-1]
+Elapsed time: 0ms
+
+Total elapsed time: 0ms

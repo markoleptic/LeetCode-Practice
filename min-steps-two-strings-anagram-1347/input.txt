@@ -1,0 +1,6 @@
+"bab"
+"aba"
+"leetcode"
+"practice"
+"anagram"
+"mangaar"
