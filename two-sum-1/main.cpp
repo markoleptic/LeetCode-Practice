@@ -27,6 +27,39 @@ class Solution
 		}
 		return std::vector<int>(2);
 	}
+
+	vector<int> twoSumTwoPointer(vector<int> &nums, int target)
+	{
+		vector<pair<int, int>> pairs(nums.size());
+
+		for (int i = 0; i < nums.size(); i++) 
+		{
+			pairs[i] = {nums[i], i};
+		}
+
+		std::sort(pairs.begin(), pairs.end());
+
+		int left = 0;
+		int right = nums.size() - 1;
+
+		while (left < right) 
+		{
+			int current = pairs[left].first + pairs[right].first;
+			if (current == target)
+			{
+				return { pairs[left].second, pairs[right].second };
+			}
+			if (current < target) 
+			{
+				left++;
+			}
+			else 
+			{
+				right--;
+			}
+		}
+		return {};
+	}
 };
 
 #ifdef LC_LOCAL

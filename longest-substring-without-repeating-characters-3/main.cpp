@@ -14,20 +14,31 @@ class Solution
 	{
 		std::map<char, int> letterMap;
 		int maxLength = 0;
-		int left = 0;
+		string currentSubstring;
 
-		for (int right = 0; right < s.size(); ++right)
+		for (int i = 0; i < s.length(); i++) 
 		{
-			char currentChar = s[right];
-			if (letterMap.find(currentChar) != letterMap.end())
-			{
-				if (letterMap[currentChar] >= left)
-					left = letterMap[currentChar] + 1;
-			}
-			letterMap[currentChar] = right;
-			maxLength = std::max(maxLength, right - left + 1);
-		}
+			char currentChar = s[i];
+			letterMap[currentChar] += 1;
 
+			if (letterMap[currentChar] == 1)
+			{
+				currentSubstring += currentChar;
+				maxLength = std::max(maxLength, static_cast<int>(currentSubstring.length()));
+			}
+			else
+			{
+				int pos = currentSubstring.find_last_of(currentChar);
+				//cout << currentSubstring << " ";
+				for (int j = 0; j <= pos; j++)
+				{
+					letterMap[currentSubstring[j]]--;
+				}
+				currentSubstring.erase(0, pos + 1);
+				currentSubstring += currentChar;
+				//cout << currentSubstring << endl;
+			}
+		}
 		return maxLength;
 	}
 };
