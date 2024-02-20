@@ -16,7 +16,7 @@ class Solution
 		int LocalMax = nums[0];
 		int LocalMin = nums[0];
 		int GlobalMax = nums[0];
-
+		std::cout << LocalMax << " : "  << LocalMin << " : " << GlobalMax << std::endl;
 		for (int i = 1; i < nums.size(); ++i)
 		{
 			int Value = nums[i];
@@ -30,8 +30,7 @@ class Solution
 			LocalMin = std::min(Value, LocalMin * Value);
 			GlobalMax = std::max(LocalMax, GlobalMax);
 
-			// std::cout << nums[i] << " : "  << LocalMax << " : "  << LocalMin << " : " << GlobalMax <<
-			// std::endl;
+			std::cout << nums[i] << " : "  << LocalMax << " : "  << LocalMin << " : " << GlobalMax << std::endl;
 		}
 		return GlobalMax;
 	}

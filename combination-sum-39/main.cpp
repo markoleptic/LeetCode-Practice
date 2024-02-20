@@ -17,27 +17,20 @@ combinations for the given input.
 class Solution
 {
 public:
-	void backtrack(vector<int> &candidates, int target, int start, vector<int> &currentCombos, vector<vector<int>> &combos)
+	void doLoop(vector<int> &candidates, int sum, int start, vector<int> &currentCombos, vector<vector<int>> &combos)
 	{
-        if (target == 0)
+        if (sum == 0)
         {
             combos.push_back(currentCombos);
             return;
         }
 		for (int i = start; i < candidates.size(); i++)
 		{
-			cout << "i=" << i << ": ";
-			for (int j = 0; j < currentCombos.size(); j++)
-			{
-				cout << currentCombos[j] << " ";
-			}
-			cout << " candidate: " << candidates[i] << endl;
-
-			if (candidates[i] > target) continue;
+			if (candidates[i] > sum) continue;
 			currentCombos.push_back(candidates[i]);
 
 			// continue with same candidate since repeats
-			backtrack(candidates, target - candidates[i], i, currentCombos, combos);
+			doLoop(candidates, sum - candidates[i], i, currentCombos, combos);
 
             // Exclude the current candidate from the combination (backtrack)
             currentCombos.pop_back();
@@ -48,7 +41,7 @@ public:
 	{
 		vector<int> currentCombo;
 		vector<vector<int>> combos;
-		backtrack(candidates, target, 0, currentCombo, combos);
+		doLoop(candidates, target, 0, currentCombo, combos);
 		return combos;
 	}
 };

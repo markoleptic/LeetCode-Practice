@@ -9,7 +9,7 @@ Given an integer array nums of unique elements, return all possible subsets (the
 The solution set must not contain duplicate subsets. Return the solution in any order.
 */
 
-// recursive template: 
+// recursive template:
 // vector<int> current;
 // for (int i = 0; i < nums.size(); i++)
 // {
@@ -33,28 +33,24 @@ The solution set must not contain duplicate subsets. Return the solution in any 
 class Solution
 {
 public:
-	void doLoop(int start, vector<int>& nums, vector<vector<int>>& out, vector<int>& current)
+	void recurse(vector<int> &nums, int start, vector<int> &current, vector<vector<int>> &out)
 	{
-		current.push_back({nums[start]});
 		out.push_back(current);
-		for (int i = start + 1; i < nums.size(); i++)
+		for (int i = start; i < nums.size(); i++)
 		{
-			doLoop(i, nums, out, current);
+			current.push_back(nums[i]);
+			recurse(nums, i + 1, current, out);
+			current.pop_back();
 		}
-		current.pop_back();
 	}
 
-    vector<vector<int>> subsets(vector<int>& nums) 
+	vector<vector<int>> subsets(vector<int> &nums)
 	{
 		vector<vector<int>> out;
-		out.push_back({});
-		for (int i = 0; i < nums.size(); i++)
-		{
-			vector<int> prevLoopValues;
-			doLoop(i, nums, out, prevLoopValues);
-		}
+		vector<int> current;
+		recurse(nums, 0, current, out);
 		return out;
-    }
+	}
 };
 
 #ifdef LC_LOCAL

@@ -1,4 +1,8 @@
-"0"
+6
+Elapsed time: 0ms
+1
+Elapsed time: 0ms
+23
 Elapsed time: 0ms
 
 Total elapsed time: 0ms

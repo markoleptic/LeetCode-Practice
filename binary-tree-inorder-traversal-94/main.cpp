@@ -10,6 +10,21 @@ Given the root of a binary tree, return the inorder traversal of its nodes' valu
 class Solution
 {
       public:
+
+	void pre_order(TreeNode* node, vector<int>& out)
+	{
+		if (!node) return;
+		out.push_back(node->val);
+		if (node->left)
+		{
+			pre_order(node, out);
+		}
+		if (node->right)
+		{
+			pre_order(node, out);
+		}
+	}
+
 	void in_order(TreeNode *node, vector<int> &out)
 	{
 		if (!node)

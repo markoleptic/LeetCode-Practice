@@ -4,49 +4,6 @@
 #define dbg(...)
 #endif
 
-static void modifyTailNext(ListNode *head, int pos)
-{
-	if (pos < 0)
-		return;
-	ListNode *tailNext = nullptr;
-
-	int index = 0;
-	ListNode *current = head;
-
-	// Find the node at position pos
-	while (current)
-	{
-		if (index == pos)
-		{
-			tailNext = current;
-			break;
-		}
-		current = current->next;
-		index++;
-	}
-
-	if (pos == 0)
-	{
-		// If pos is 0, connect the last node to the head
-		current = head;
-		while (current->next)
-		{
-			current = current->next;
-		}
-		current->next = head;
-	}
-	else if (tailNext)
-	{
-		// Connect the last node to the node at position pos
-		current = head;
-		while (current->next)
-		{
-			current = current->next;
-		}
-		current->next = tailNext;
-	}
-}
-
 /**
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
@@ -61,7 +18,6 @@ class Solution
       public:
 	bool hasCycle(ListNode *head, int pos)
 	{
-		modifyTailNext(head, pos);
 		if (!head || !head->next)
 			return false;
 		ListNode *headOne = head;

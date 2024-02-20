@@ -13,19 +13,22 @@ letters.
 */
 class Solution
 {
-	map<char, vector<char>> letterMap;
-	void doLoop(vector<string> &out, int index, const string &digits, string &str)
+	void recurse(const string &digits, int index, string &current, vector<string> &out)
 	{
-		if (str.length() == digits.size())
+		// termination condition; add to out vector
+		if (current.length() == digits.size())
 		{
-			out.push_back(str);
+			out.push_back(current);
 			return;
 		}
 		for (int i = 0; i < letterMap[digits[index]].size(); i++)
 		{
-			str += letterMap[digits[index]][i];
-			doLoop(out, index + 1, digits, str);
-			str.erase(str.end() - 1);
+			// add a new letter to current
+			current += letterMap[digits[index]][i];
+			// recursively call for next index in digits
+			recurse(digits, index + 1, current, out);
+			// remove the added letter
+			current.erase(current.end() - 1);
 		}
 	}
 
@@ -46,9 +49,11 @@ public:
 		letterMap['9'] = {'w', 'x', 'y', 'z'};
 
 		string str;
-		doLoop(out, 0, digits, str);
+		recurse(digits, 0, str, out);
 		return out;
 	}
+
+	map<char, vector<char>> letterMap;
 };
 
 #ifdef LC_LOCAL
